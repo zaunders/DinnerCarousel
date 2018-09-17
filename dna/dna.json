@@ -1,0 +1,570 @@
+{
+  "Version": 1,
+  "UUID": "c09b89ee-3271-4ddf-9567-602bfa7967b8",
+  "Name": "DinnerCarousel",
+  "Properties": {
+    "description": "The main purpose of this app is to facilitate community dinners. It is meant to make the process of joining, organizing and structuring community dinners where poeple host each other in their own homes, frictionless and super easy to do.  Creating dinners for each other and conversations around dinner tables are a great way of strenghtening social bonds and getting to know people. Cooking larger but less frequent meals also free up lots of time (and is often cheaper)! Let’s eat together!",
+    "language": "en"
+  },
+  "PropertiesSchemaFile": "properties_schema.json",
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+  "Zomes": [
+    {
+      "Name": "dinnerParticipant",
+      "Description": "the characteristics and functionality of the dinner guest/host",
+      "RibosomeType": "js",
+      "CodeFile": "dinnerparticipant.js",
+      "Entries": [
+        {
+          "Name": "food_needs",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "food_needs.json"
+        },
+        {
+          "Name": "family",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "family.json"
+        },
+        {
+          "Name": "accepted_dinner_start_time",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "accepted_dinner_start_time.json"
+        },
+        {
+          "Name": "hosting_adress",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "hosting_adress.json"
+        },
+        {
+          "Name": "min_group_size",
+          "Required": true,
+          "DataFormat": "string",
+          "Sharing": "public"
+        },
+        {
+          "Name": "max_group_size",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "max_group_size.json"
+        },
+        {
+          "Name": "recepies_links",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "hosting_meter",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "hosting_meter.json"
+        },
+        {
+          "Name": "in_group_links",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        },
+        {
+          "Name": "available_on_date",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "available_on_date.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "food_needsCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "food_needsRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "food_needsUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "food_needsDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "familyCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "familyRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "familyUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "familyDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "accepted_dinner_start_timeCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "accepted_dinner_start_timeRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "accepted_dinner_start_timeUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "accepted_dinner_start_timeDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_adressCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_adressRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_adressUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "min_group_sizeCreate",
+          "CallingType": "string",
+          "Exposure": "public"
+        },
+        {
+          "Name": "min_group_sizeRead",
+          "CallingType": "string",
+          "Exposure": "public"
+        },
+        {
+          "Name": "min_group_sizeUpdate",
+          "CallingType": "string",
+          "Exposure": "public"
+        },
+        {
+          "Name": "min_group_sizeDelete",
+          "CallingType": "string",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_group_sizeCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_group_sizeRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_group_sizeUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_group_sizeDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_meterCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_meterRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "hosting_meterUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "available_on_dateCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "available_on_dateRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "available_on_dateUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "available_on_dateDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "set_food_needs",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "set_family",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "set_accepted_time",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "add_recipie",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "remove_recipie",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "add_dates",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "remove_dates",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "join_group",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "leave_group",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "accept_dinner_invite",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "decline_dinner_invite",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "cancel_dinner",
+          "CallingType": "json",
+          "Exposure": ""
+        }
+      ]
+    },
+    {
+      "Name": "dinnerGroup",
+      "Description": "Basic functionality around groups, through which users are matched into dinners",
+      "RibosomeType": "js",
+      "CodeFile": "dinnergroup.js",
+      "Entries": [
+        {
+          "Name": "geo_location_center",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "geo_location_center.json"
+        },
+        {
+          "Name": "max_distance",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "max_distance.json"
+        },
+        {
+          "Name": "invite_only",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "invite_only.json"
+        },
+        {
+          "Name": "conversation_topics",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "conversation_topics.json"
+        },
+        {
+          "Name": "inexpensive_and_simple_dinners",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "inexpensive_and_simple_dinners.json"
+        },
+        {
+          "Name": "BYOD",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "BYOD.json"
+        },
+        {
+          "Name": "allow_kids_or_pets",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "allow_kids_or_pets.json"
+        },
+        {
+          "Name": "pot_luck_dinners",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "pot_luck_dinners.json"
+        },
+        {
+          "Name": "dinner",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "dinner.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "geo_location_centerCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "geo_location_centerRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "geo_location_centerUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "geo_location_centerDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_distanceCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_distanceRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_distanceUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "max_distanceDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "invite_onlyCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "invite_onlyRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "invite_onlyUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "invite_onlyDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "conversation_topicsCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "conversation_topicsRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "conversation_topicsUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "conversation_topicsDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "inexpensive_and_simple_dinnersCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "inexpensive_and_simple_dinnersRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "inexpensive_and_simple_dinnersUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "inexpensive_and_simple_dinnersDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "BYODCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "BYODRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "BYODUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "BYODDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "allow_kids_or_petsCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "allow_kids_or_petsRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "allow_kids_or_petsUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "allow_kids_or_petsDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "pot_luck_dinnersCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "pot_luck_dinnersRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "pot_luck_dinnersUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "pot_luck_dinnersDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "dinnerCreate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "dinnerRead",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "dinnerUpdate",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "dinnerDelete",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "create_tentative_dinner",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "delete_tentative_dinner",
+          "CallingType": "json",
+          "Exposure": ""
+        },
+        {
+          "Name": "create_accepted_dinner",
+          "CallingType": "json",
+          "Exposure": ""
+        }
+      ]
+    }
+  ]
+}

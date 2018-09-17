@@ -1,0 +1,353 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for geo_location_centerCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "geo_location_centerCreate",
+      "Input": {
+        "checked": false,
+        "adress": {
+          "street": "Backavägen 8",
+          "zip": 26868,
+          "City": "Röstånga",
+          "Country": "Sweden"
+        },
+        "GPS": {
+          "lat": 55.99958030000001,
+          "long": 13.28495190000001
+        }
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for geo_location_centerRead",
+      "Zome": "dinnerGroup",
+      "FnName": "geo_location_centerRead",
+      "Input": "%h%",
+      "Output": {
+        "checked": false,
+        "adress": {
+          "street": "Backavägen 8",
+          "zip": 26868,
+          "City": "Röstånga",
+          "Country": "Sweden"
+        },
+        "GPS": {
+          "lat": 55.99958030000001,
+          "long": 13.28495190000001
+        }
+      }
+    },
+    {
+      "Convey": "auto-generated test for geo_location_centerUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "geo_location_centerUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for geo_location_centerDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "geo_location_centerDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_distanceCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "max_distanceCreate",
+      "Input": {
+        "max_distance_in_km": 20
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_distanceRead",
+      "Zome": "dinnerGroup",
+      "FnName": "max_distanceRead",
+      "Input": "%h%",
+      "Output": {
+        "max_distance_in_km": 20
+      }
+    },
+    {
+      "Convey": "auto-generated test for max_distanceUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "max_distanceUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_distanceDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "max_distanceDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for invite_onlyCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "invite_onlyCreate",
+      "Input": {
+        "invite_only": false
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for invite_onlyRead",
+      "Zome": "dinnerGroup",
+      "FnName": "invite_onlyRead",
+      "Input": "%h%",
+      "Output": {
+        "invite_only": false
+      }
+    },
+    {
+      "Convey": "auto-generated test for invite_onlyUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "invite_onlyUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for invite_onlyDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "invite_onlyDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for conversation_topicsCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "conversation_topicsCreate",
+      "Input": {
+        "topics": [
+          "politics"
+        ]
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for conversation_topicsRead",
+      "Zome": "dinnerGroup",
+      "FnName": "conversation_topicsRead",
+      "Input": "%h%",
+      "Output": {
+        "topics": [
+          "politics"
+        ]
+      }
+    },
+    {
+      "Convey": "auto-generated test for conversation_topicsUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "conversation_topicsUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for conversation_topicsDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "conversation_topicsDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for inexpensive_and_simple_dinnersCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "inexpensive_and_simple_dinnersCreate",
+      "Input": {
+        "inexpensive": false
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for inexpensive_and_simple_dinnersRead",
+      "Zome": "dinnerGroup",
+      "FnName": "inexpensive_and_simple_dinnersRead",
+      "Input": "%h%",
+      "Output": {
+        "inexpensive": false
+      }
+    },
+    {
+      "Convey": "auto-generated test for inexpensive_and_simple_dinnersUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "inexpensive_and_simple_dinnersUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for inexpensive_and_simple_dinnersDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "inexpensive_and_simple_dinnersDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for BYODCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "BYODCreate",
+      "Input": {
+        "BYOD": false
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for BYODRead",
+      "Zome": "dinnerGroup",
+      "FnName": "BYODRead",
+      "Input": "%h%",
+      "Output": {
+        "BYOD": false
+      }
+    },
+    {
+      "Convey": "auto-generated test for BYODUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "BYODUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for BYODDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "BYODDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for allow_kids_or_petsCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "allow_kids_or_petsCreate",
+      "Input": {
+        "allowed_to_bring": {
+          "kids": true,
+          "pets": false
+        }
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for allow_kids_or_petsRead",
+      "Zome": "dinnerGroup",
+      "FnName": "allow_kids_or_petsRead",
+      "Input": "%h%",
+      "Output": {
+        "allowed_to_bring": {
+          "kids": true,
+          "pets": false
+        }
+      }
+    },
+    {
+      "Convey": "auto-generated test for allow_kids_or_petsUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "allow_kids_or_petsUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for allow_kids_or_petsDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "allow_kids_or_petsDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for pot_luck_dinnersCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "pot_luck_dinnersCreate",
+      "Input": {
+        "potluck": false
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for pot_luck_dinnersRead",
+      "Zome": "dinnerGroup",
+      "FnName": "pot_luck_dinnersRead",
+      "Input": "%h%",
+      "Output": {
+        "potluck": false
+      }
+    },
+    {
+      "Convey": "auto-generated test for pot_luck_dinnersUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "pot_luck_dinnersUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for pot_luck_dinnersDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "pot_luck_dinnersDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for dinnerCreate",
+      "Zome": "dinnerGroup",
+      "FnName": "dinnerCreate",
+      "Input": {
+        "dinner_datetime": "2019-01-02:19.00",
+        "host": "host_userhash",
+        "guest_list": [
+          "userhash1"
+        ],
+        "confirmed_dinner": false
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for dinnerRead",
+      "Zome": "dinnerGroup",
+      "FnName": "dinnerRead",
+      "Input": "%h%",
+      "Output": {
+        "dinner_datetime": "2019-01-02:19.00",
+        "host": "host_userhash",
+        "guest_list": [
+          "userhash1"
+        ],
+        "confirmed_dinner": false
+      }
+    },
+    {
+      "Convey": "auto-generated test for dinnerUpdate",
+      "Zome": "dinnerGroup",
+      "FnName": "dinnerUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for dinnerDelete",
+      "Zome": "dinnerGroup",
+      "FnName": "dinnerDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for create_tentative_dinner",
+      "Zome": "dinnerGroup",
+      "FnName": "create_tentative_dinner",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for delete_tentative_dinner",
+      "Zome": "dinnerGroup",
+      "FnName": "delete_tentative_dinner",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for create_accepted_dinner",
+      "Zome": "dinnerGroup",
+      "FnName": "create_accepted_dinner",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}

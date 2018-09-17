@@ -1,0 +1,104 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "checked",
+    "adress",
+    "GPS"
+  ],
+  "properties": {
+    "checked": {
+      "$id": "#/properties/checked",
+      "type": "boolean",
+      "title": "The Checked Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "adress": {
+      "$id": "#/properties/adress",
+      "type": "object",
+      "title": "The Adress Schema",
+      "required": [
+        "street",
+        "zip",
+        "City",
+        "Country"
+      ],
+      "properties": {
+        "street": {
+          "$id": "#/properties/adress/properties/street",
+          "type": "string",
+          "title": "The Street Schema",
+          "default": "",
+          "examples": [
+            "Backavägen 8"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "zip": {
+          "$id": "#/properties/adress/properties/zip",
+          "type": "integer",
+          "title": "The Zip Schema",
+          "default": 0,
+          "examples": [
+            26868
+          ]
+        },
+        "City": {
+          "$id": "#/properties/adress/properties/City",
+          "type": "string",
+          "title": "The City Schema",
+          "default": "",
+          "examples": [
+            "Röstånga"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "Country": {
+          "$id": "#/properties/adress/properties/Country",
+          "type": "string",
+          "title": "The Country Schema",
+          "default": "",
+          "examples": [
+            "Sweden"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "GPS": {
+      "$id": "#/properties/GPS",
+      "type": "object",
+      "title": "The Gps Schema",
+      "required": [
+        "lat",
+        "long"
+      ],
+      "properties": {
+        "lat": {
+          "$id": "#/properties/GPS/properties/lat",
+          "type": "number",
+          "title": "The Lat Schema",
+          "default": 0,
+          "examples": [
+            55.99958030000001
+          ]
+        },
+        "long": {
+          "$id": "#/properties/GPS/properties/long",
+          "type": "number",
+          "title": "The Long Schema",
+          "default": 0,
+          "examples": [
+            13.28495190000001
+          ]
+        }
+      }
+    }
+  }
+}

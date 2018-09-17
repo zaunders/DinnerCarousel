@@ -1,0 +1,61 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "allergies",
+    "diet",
+    "strong_dislikes"
+  ],
+  "properties": {
+    "allergies": {
+      "$id": "#/properties/allergies",
+      "type": "array",
+      "title": "The Allergies Schema",
+      "items": {
+        "$id": "#/properties/allergies/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "nuts",
+          "gluten"
+        ],
+        "pattern": "^(.*)$"
+      }
+    },
+    "diet": {
+      "$id": "#/properties/diet",
+      "type": "array",
+      "title": "The Diet Schema",
+      "items": {
+        "$id": "#/properties/diet/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "paleo"
+        ],
+        "pattern": "^(.*)$"
+      }
+    },
+    "strong_dislikes": {
+      "$id": "#/properties/strong_dislikes",
+      "type": "array",
+      "title": "The Strong_dislikes Schema",
+      "items": {
+        "$id": "#/properties/strong_dislikes/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "milk",
+          "cheese"
+        ],
+        "pattern": "^(.*)$"
+      }
+    }
+  }
+}

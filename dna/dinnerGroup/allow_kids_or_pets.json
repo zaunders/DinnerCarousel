@@ -1,0 +1,41 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "allowed_to_bring"
+  ],
+  "properties": {
+    "allowed_to_bring": {
+      "$id": "#/properties/allowed_to_bring",
+      "type": "object",
+      "title": "The Allowed_to_bring Schema",
+      "required": [
+        "kids",
+        "pets"
+      ],
+      "properties": {
+        "kids": {
+          "$id": "#/properties/allowed_to_bring/properties/kids",
+          "type": "boolean",
+          "title": "The Kids Schema",
+          "default": false,
+          "examples": [
+            true
+          ]
+        },
+        "pets": {
+          "$id": "#/properties/allowed_to_bring/properties/pets",
+          "type": "boolean",
+          "title": "The Pets Schema",
+          "default": false,
+          "examples": [
+            false
+          ]
+        }
+      }
+    }
+  }
+}

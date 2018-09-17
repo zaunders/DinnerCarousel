@@ -1,0 +1,380 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for food_needsCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "food_needsCreate",
+      "Input": {
+        "allergies": [
+          "nuts"
+        ],
+        "diet": [
+          "paleo"
+        ],
+        "strong_dislikes": [
+          "milk"
+        ]
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for food_needsRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "food_needsRead",
+      "Input": "%h%",
+      "Output": {
+        "allergies": [
+          "nuts"
+        ],
+        "diet": [
+          "paleo"
+        ],
+        "strong_dislikes": [
+          "milk"
+        ]
+      }
+    },
+    {
+      "Convey": "auto-generated test for food_needsUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "food_needsUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for food_needsDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "food_needsDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for familyCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "familyCreate",
+      "Input": {
+        "partner": false,
+        "kids": {
+          "age": 5,
+          "will_bring_food_for": true
+        },
+        "link_to_other": "hash of user"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for familyRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "familyRead",
+      "Input": "%h%",
+      "Output": {
+        "partner": false,
+        "kids": {
+          "age": 5,
+          "will_bring_food_for": true
+        },
+        "link_to_other": "hash of user"
+      }
+    },
+    {
+      "Convey": "auto-generated test for familyUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "familyUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for familyDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "familyDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for accepted_dinner_start_timeCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "accepted_dinner_start_timeCreate",
+      "Input": {
+        "accepted_dinner_start_time": [
+          17
+        ]
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for accepted_dinner_start_timeRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "accepted_dinner_start_timeRead",
+      "Input": "%h%",
+      "Output": {
+        "accepted_dinner_start_time": [
+          17
+        ]
+      }
+    },
+    {
+      "Convey": "auto-generated test for accepted_dinner_start_timeUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "accepted_dinner_start_timeUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for accepted_dinner_start_timeDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "accepted_dinner_start_timeDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for hosting_adressCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_adressCreate",
+      "Input": {
+        "checked": false,
+        "adress": {
+          "street": "Backavägen 8",
+          "zip": 26868,
+          "City": "Röstånga",
+          "Country": "Sweden"
+        },
+        "GPS": {
+          "lat": 55.99958030000001,
+          "long": 13.28495190000001
+        }
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for hosting_adressRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_adressRead",
+      "Input": "%h%",
+      "Output": {
+        "checked": false,
+        "adress": {
+          "street": "Backavägen 8",
+          "zip": 26868,
+          "City": "Röstånga",
+          "Country": "Sweden"
+        },
+        "GPS": {
+          "lat": 55.99958030000001,
+          "long": 13.28495190000001
+        }
+      }
+    },
+    {
+      "Convey": "auto-generated test for hosting_adressUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_adressUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for min_group_sizeCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "min_group_sizeCreate",
+      "Input": "test",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for min_group_sizeRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "min_group_sizeRead",
+      "Input": "%h%",
+      "Output": "test"
+    },
+    {
+      "Convey": "auto-generated test for min_group_sizeUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "min_group_sizeUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for min_group_sizeDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "min_group_sizeDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_group_sizeCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "max_group_sizeCreate",
+      "Input": {
+        "max_group_size": 12
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_group_sizeRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "max_group_sizeRead",
+      "Input": "%h%",
+      "Output": {
+        "max_group_size": 12
+      }
+    },
+    {
+      "Convey": "auto-generated test for max_group_sizeUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "max_group_sizeUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for max_group_sizeDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "max_group_sizeDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for hosting_meterCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_meterCreate",
+      "Input": {
+        "hosting_meter": 10
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for hosting_meterRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_meterRead",
+      "Input": "%h%",
+      "Output": {
+        "hosting_meter": 10
+      }
+    },
+    {
+      "Convey": "auto-generated test for hosting_meterUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "hosting_meterUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for available_on_dateCreate",
+      "Zome": "dinnerParticipant",
+      "FnName": "available_on_dateCreate",
+      "Input": {
+        "available_on_dates": [
+          "2019-01-01"
+        ]
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for available_on_dateRead",
+      "Zome": "dinnerParticipant",
+      "FnName": "available_on_dateRead",
+      "Input": "%h%",
+      "Output": {
+        "available_on_dates": [
+          "2019-01-01"
+        ]
+      }
+    },
+    {
+      "Convey": "auto-generated test for available_on_dateUpdate",
+      "Zome": "dinnerParticipant",
+      "FnName": "available_on_dateUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for available_on_dateDelete",
+      "Zome": "dinnerParticipant",
+      "FnName": "available_on_dateDelete",
+      "Input": "%h%",
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for set_food_needs",
+      "Zome": "dinnerParticipant",
+      "FnName": "set_food_needs",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for set_family",
+      "Zome": "dinnerParticipant",
+      "FnName": "set_family",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for set_accepted_time",
+      "Zome": "dinnerParticipant",
+      "FnName": "set_accepted_time",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for add_recipie",
+      "Zome": "dinnerParticipant",
+      "FnName": "add_recipie",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for remove_recipie",
+      "Zome": "dinnerParticipant",
+      "FnName": "remove_recipie",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for add_dates",
+      "Zome": "dinnerParticipant",
+      "FnName": "add_dates",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for remove_dates",
+      "Zome": "dinnerParticipant",
+      "FnName": "remove_dates",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for join_group",
+      "Zome": "dinnerParticipant",
+      "FnName": "join_group",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for leave_group",
+      "Zome": "dinnerParticipant",
+      "FnName": "leave_group",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for accept_dinner_invite",
+      "Zome": "dinnerParticipant",
+      "FnName": "accept_dinner_invite",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for decline_dinner_invite",
+      "Zome": "dinnerParticipant",
+      "FnName": "decline_dinner_invite",
+      "Input": "",
+      "Output": {}
+    },
+    {
+      "Convey": "auto-generated test for cancel_dinner",
+      "Zome": "dinnerParticipant",
+      "FnName": "cancel_dinner",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}

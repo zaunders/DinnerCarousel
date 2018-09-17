@@ -1,0 +1,2702 @@
+{
+  # This is a holochain scaffold yaml definition. http://ceptr.org/projects/holochain
+
+  # DNA File Version
+  # Version indicator for changes to DNA
+  "Version": "0.0.1",
+  "Generator": "hc-scaffold:0.1.0+e8a394b",
+
+  # Application DNA
+  # The DNA specifies the entry structure and functions and configuration of your application
+  "DNA": {
+
+    # DNA File Version
+    # Version indicator for changes to DNA
+    "Version": 1,
+
+    # DNA Unique ID
+    # This ID differentiates your app from others. For example, to tell one Slack team from another which same code.
+    "UUID": "c09b89ee-3271-4ddf-9567-602bfa7967b8",
+
+    # Application Name
+    # What would you like to call your holochain app?
+    "Name": "DinnerCarousel",
+
+    # Properties
+    # Properties that you want available across all Zomes.
+    "Properties": {
+
+      # Application Description
+      # Briefly describe your holochain app.
+      "description": "The main purpose of this app is to facilitate community dinners. It is meant to make the process of joining, organizing and structuring community dinners where poeple host each other in their own homes, frictionless and super easy to do.  Creating dinners for each other and conversations around dinner tables are a great way of strenghtening social bonds and getting to know people. Cooking larger but less frequent meals also free up lots of time (and is often cheaper)! Let’s eat together!",
+
+      # Language
+      # The base (human) language of this holochain app.
+      "language": "en"
+    },
+
+    # Properties Schema File
+    # Describes the entries in the Properties section of your dna file.
+    "PropertiesSchemaFile": "properties_schema.json",
+
+    # DHT Settings
+    # Configure the properties of your Distributed Hash Table (e.g. hash algorithm, neighborhood size, etc.).
+    "DHTConfig": {
+      "HashType": "sha2-256"
+    },
+
+    # Zomes
+    # List the Zomes your application will support.
+    "Zomes": [
+      {
+
+        # Zome Name
+        # The name of this code module.
+        "Name": "dinnerParticipant",
+
+        # Zome Description
+        # What is the purpose of this module?
+        "Description": "the characteristics and functionality of the dinner guest/host",
+
+        # Ribosome Type
+        # What scripting language will you code in?
+        "RibosomeType": "js",
+
+        # Code File
+        # Points to the main script file for this Zome.
+        "CodeFile": "dinnerparticipant.js",
+
+        # Zome Entries
+        # Data stored and tracked by your Zome.
+        "Entries": [
+          {
+            "Name": "food_needs", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"allergies\",\n    \"diet\",\n    \"strong_dislikes\"\n  ],\n  \"properties\": {\n    \"allergies\": {\n      \"$id\": \"#/properties/allergies\",\n      \"type\": \"array\",\n      \"title\": \"The Allergies Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/allergies/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"nuts\",\n          \"gluten\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    },\n    \"diet\": {\n      \"$id\": \"#/properties/diet\",\n      \"type\": \"array\",\n      \"title\": \"The Diet Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/diet/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"paleo\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    },\n    \"strong_dislikes\": {\n      \"$id\": \"#/properties/strong_dislikes\",\n      \"type\": \"array\",\n      \"title\": \"The Strong_dislikes Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/strong_dislikes/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"milk\",\n          \"cheese\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "family", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"partner\",\n    \"kids\",\n    \"link_to_other\"\n  ],\n  \"properties\": {\n    \"partner\": {\n      \"$id\": \"#/properties/partner\",\n      \"type\": \"boolean\",\n      \"title\": \"The Partner Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    },\n    \"kids\": {\n      \"$id\": \"#/properties/kids\",\n      \"type\": \"object\",\n      \"title\": \"The Kids Schema\",\n      \"required\": [\n        \"age\",\n        \"will_bring_food_for\"\n      ],\n      \"properties\": {\n        \"age\": {\n          \"$id\": \"#/properties/kids/properties/age\",\n          \"type\": \"integer\",\n          \"title\": \"The Age Schema\",\n          \"default\": 0,\n          \"examples\": [\n            5\n          ]\n        },\n        \"will_bring_food_for\": {\n          \"$id\": \"#/properties/kids/properties/will_bring_food_for\",\n          \"type\": \"boolean\",\n          \"title\": \"The Will_bring_food_for Schema\",\n          \"default\": false,\n          \"examples\": [\n            true\n          ]\n        }\n      }\n    },\n    \"link_to_other\": {\n      \"$id\": \"#/properties/link_to_other\",\n      \"type\": \"string\",\n      \"title\": \"The Link_to_other Schema\",\n      \"default\": \"\",\n      \"examples\": [\n        \"hash of user\"\n      ],\n      \"pattern\": \"^(.*)$\"\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "accepted_dinner_start_time", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"accepted_dinner_start_time\"\n  ],\n  \"properties\": {\n    \"accepted_dinner_start_time\": {\n      \"$id\": \"#/properties/accepted_dinner_start_time\",\n      \"type\": \"array\",\n      \"title\": \"The Accepted_dinner_start_time Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/accepted_dinner_start_time/items\",\n        \"type\": \"integer\",\n        \"title\": \"The Items Schema\",\n        \"default\": 0,\n        \"examples\": [\n          17,\n          20\n        ]\n      }\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "hosting_adress", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"checked\",\n    \"adress\",\n    \"GPS\"\n  ],\n  \"properties\": {\n    \"checked\": {\n      \"$id\": \"#/properties/checked\",\n      \"type\": \"boolean\",\n      \"title\": \"The Checked Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    },\n    \"adress\": {\n      \"$id\": \"#/properties/adress\",\n      \"type\": \"object\",\n      \"title\": \"The Adress Schema\",\n      \"required\": [\n        \"street\",\n        \"zip\",\n        \"City\",\n        \"Country\"\n      ],\n      \"properties\": {\n        \"street\": {\n          \"$id\": \"#/properties/adress/properties/street\",\n          \"type\": \"string\",\n          \"title\": \"The Street Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Backavägen 8\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        },\n        \"zip\": {\n          \"$id\": \"#/properties/adress/properties/zip\",\n          \"type\": \"integer\",\n          \"title\": \"The Zip Schema\",\n          \"default\": 0,\n          \"examples\": [\n            26868\n          ]\n        },\n        \"City\": {\n          \"$id\": \"#/properties/adress/properties/City\",\n          \"type\": \"string\",\n          \"title\": \"The City Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Röstånga\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        },\n        \"Country\": {\n          \"$id\": \"#/properties/adress/properties/Country\",\n          \"type\": \"string\",\n          \"title\": \"The Country Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Sweden\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        }\n      }\n    },\n    \"GPS\": {\n      \"$id\": \"#/properties/GPS\",\n      \"type\": \"object\",\n      \"title\": \"The Gps Schema\",\n      \"required\": [\n        \"lat\",\n        \"long\"\n      ],\n      \"properties\": {\n        \"lat\": {\n          \"$id\": \"#/properties/GPS/properties/lat\",\n          \"type\": \"number\",\n          \"title\": \"The Lat Schema\",\n          \"default\": 0,\n          \"examples\": [\n            55.99958030000001\n          ]\n        },\n        \"long\": {\n          \"$id\": \"#/properties/GPS/properties/long\",\n          \"type\": \"number\",\n          \"title\": \"The Long Schema\",\n          \"default\": 0,\n          \"examples\": [\n            13.28495190000001\n          ]\n        }\n      }\n    }\n  }\n}",
+            "_": "cru"
+          },
+          {
+            "Name": "min_group_size", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "string", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "_": "crud"
+          },
+          {
+            "Name": "max_group_size", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"max_group_size\"\n  ],\n  \"properties\": {\n    \"max_group_size\": {\n      \"$id\": \"#/properties/max_group_size\",\n      \"type\": \"integer\",\n      \"title\": \"The max_group_size Schema\",\n      \"default\": 0,\n      \"examples\": [\n        12\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "recepies_links", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "links", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "_": "-"
+          },
+          {
+            "Name": "hosting_meter", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"hosting_meter\"\n  ],\n  \"properties\": {\n    \"hosting_meter\": {\n      \"$id\": \"#/properties/hosting_meter\",\n      \"type\": \"integer\",\n      \"title\": \"The Hosting_meter Schema\",\n      \"default\": 0,\n      \"examples\": [\n        10\n      ]\n    }\n  }\n}",
+            "_": "cru"
+          },
+          {
+            "Name": "in_group_links", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "links", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "_": "-"
+          },
+          {
+            "Name": "available_on_date", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"available_on_dates\"\n  ],\n  \"properties\": {\n    \"available_on_dates\": {\n      \"$id\": \"#/properties/available_on_dates\",\n      \"type\": \"array\",\n      \"title\": \"The Available_on_dates Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/available_on_dates/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"2019-01-01\",\n          \"2019-01-02\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    }\n  }\n}",
+            "_": "crud"
+          }
+        ],
+
+        # Zome Functions
+        # Functions which can be called in your Zome's API.
+        "Functions": [
+          {
+            "Name": "food_needsCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:food_needs"
+          },
+          {
+            "Name": "food_needsRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:food_needs"
+          },
+          {
+            "Name": "food_needsUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:food_needs"
+          },
+          {
+            "Name": "food_needsDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:food_needs"
+          },
+          {
+            "Name": "familyCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:family"
+          },
+          {
+            "Name": "familyRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:family"
+          },
+          {
+            "Name": "familyUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:family"
+          },
+          {
+            "Name": "familyDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:family"
+          },
+          {
+            "Name": "accepted_dinner_start_timeCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:accepted_dinner_start_time"
+          },
+          {
+            "Name": "accepted_dinner_start_timeRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:accepted_dinner_start_time"
+          },
+          {
+            "Name": "accepted_dinner_start_timeUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:accepted_dinner_start_time"
+          },
+          {
+            "Name": "accepted_dinner_start_timeDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:accepted_dinner_start_time"
+          },
+          {
+            "Name": "hosting_adressCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:hosting_adress"
+          },
+          {
+            "Name": "hosting_adressRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:hosting_adress"
+          },
+          {
+            "Name": "hosting_adressUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:hosting_adress"
+          },
+          {
+            "Name": "min_group_sizeCreate", # The name of this function.
+            "CallingType": "string", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:min_group_size"
+          },
+          {
+            "Name": "min_group_sizeRead", # The name of this function.
+            "CallingType": "string", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:min_group_size"
+          },
+          {
+            "Name": "min_group_sizeUpdate", # The name of this function.
+            "CallingType": "string", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:min_group_size"
+          },
+          {
+            "Name": "min_group_sizeDelete", # The name of this function.
+            "CallingType": "string", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:min_group_size"
+          },
+          {
+            "Name": "max_group_sizeCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:max_group_size"
+          },
+          {
+            "Name": "max_group_sizeRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:max_group_size"
+          },
+          {
+            "Name": "max_group_sizeUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:max_group_size"
+          },
+          {
+            "Name": "max_group_sizeDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:max_group_size"
+          },
+          {
+            "Name": "hosting_meterCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:hosting_meter"
+          },
+          {
+            "Name": "hosting_meterRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:hosting_meter"
+          },
+          {
+            "Name": "hosting_meterUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:hosting_meter"
+          },
+          {
+            "Name": "available_on_dateCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:available_on_date"
+          },
+          {
+            "Name": "available_on_dateRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:available_on_date"
+          },
+          {
+            "Name": "available_on_dateUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:available_on_date"
+          },
+          {
+            "Name": "available_on_dateDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:available_on_date"
+          },
+          {
+            "Name": "set_food_needs", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "set_family", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "set_accepted_time", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "add_recipie", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "remove_recipie", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "add_dates", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "remove_dates", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "join_group", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "leave_group", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "accept_dinner_invite", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "decline_dinner_invite", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "cancel_dinner", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          }
+        ],
+
+        # Zome Source Code
+        # The logic that will control Zome behavior
+        "Code": "'use strict';\n\n// -----------------------------------------------------------------\n//  This stub Zome code file was auto-generated by hc-scaffold\n// -----------------------------------------------------------------\n\n// -----------------------------------------------------------------\n//  Exposed functions with custom logic https://developer.holochain.org/API_reference\n// -----------------------------------------------------------------\n\nfunction food_needsCreate (food_needsEntry) {\n  var food_needsHash = commit(\"food_needs\", food_needsEntry);\n  return food_needsHash;\n}\n\nfunction food_needsRead (food_needsHash) {\n  var food_needs = get(food_needsHash);\n  return food_needs;\n}\n\nfunction food_needsUpdate (food_needsHash) {\n  var sampleValue={\"allergies\":[\"nuts\"],\"diet\":[\"paleo\"],\"strong_dislikes\":[\"milk\"],\"extraField\":true};\n  var food_needsOutHash = update(\"food_needs\", sampleValue, food_needsHash);\n  return food_needsOutHash;\n}\n\nfunction food_needsDelete (food_needsHash) {\n  var result = remove(food_needsHash, \"\");\n  return result;\n}\n\nfunction familyCreate (familyEntry) {\n  var familyHash = commit(\"family\", familyEntry);\n  return familyHash;\n}\n\nfunction familyRead (familyHash) {\n  var family = get(familyHash);\n  return family;\n}\n\nfunction familyUpdate (familyHash) {\n  var sampleValue={\"partner\":false,\"kids\":{\"age\":5,\"will_bring_food_for\":true},\"link_to_other\":\"hash of user\",\"extraField\":true};\n  var familyOutHash = update(\"family\", sampleValue, familyHash);\n  return familyOutHash;\n}\n\nfunction familyDelete (familyHash) {\n  var result = remove(familyHash, \"\");\n  return result;\n}\n\nfunction accepted_dinner_start_timeCreate (accepted_dinner_start_timeEntry) {\n  var accepted_dinner_start_timeHash = commit(\"accepted_dinner_start_time\", accepted_dinner_start_timeEntry);\n  return accepted_dinner_start_timeHash;\n}\n\nfunction accepted_dinner_start_timeRead (accepted_dinner_start_timeHash) {\n  var accepted_dinner_start_time = get(accepted_dinner_start_timeHash);\n  return accepted_dinner_start_time;\n}\n\nfunction accepted_dinner_start_timeUpdate (accepted_dinner_start_timeHash) {\n  var sampleValue={\"accepted_dinner_start_time\":[17],\"extraField\":true};\n  var accepted_dinner_start_timeOutHash = update(\"accepted_dinner_start_time\", sampleValue, accepted_dinner_start_timeHash);\n  return accepted_dinner_start_timeOutHash;\n}\n\nfunction accepted_dinner_start_timeDelete (accepted_dinner_start_timeHash) {\n  var result = remove(accepted_dinner_start_timeHash, \"\");\n  return result;\n}\n\nfunction hosting_adressCreate (hosting_adressEntry) {\n  var hosting_adressHash = commit(\"hosting_adress\", hosting_adressEntry);\n  return hosting_adressHash;\n}\n\nfunction hosting_adressRead (hosting_adressHash) {\n  var hosting_adress = get(hosting_adressHash);\n  return hosting_adress;\n}\n\nfunction hosting_adressUpdate (hosting_adressHash) {\n  var sampleValue={\"checked\":false,\"adress\":{\"street\":\"Backavägen 8\",\"zip\":26868,\"City\":\"Röstånga\",\"Country\":\"Sweden\"},\"GPS\":{\"lat\":55.99958030000001,\"long\":13.28495190000001},\"extraField\":true};\n  var hosting_adressOutHash = update(\"hosting_adress\", sampleValue, hosting_adressHash);\n  return hosting_adressOutHash;\n}\n\nfunction min_group_sizeCreate (min_group_sizeEntry) {\n  var min_group_sizeHash = commit(\"min_group_size\", min_group_sizeEntry);\n  return min_group_sizeHash;\n}\n\nfunction min_group_sizeRead (min_group_sizeHash) {\n  var min_group_size = get(min_group_sizeHash);\n  return min_group_size;\n}\n\nfunction min_group_sizeUpdate (min_group_sizeHash) {\n  var sampleValue={\"min_group_size\":3,\"extraField\":true};\n  var min_group_sizeOutHash = update(\"min_group_size\", sampleValue, min_group_sizeHash);\n  return min_group_sizeOutHash;\n}\n\nfunction min_group_sizeDelete (min_group_sizeHash) {\n  var result = remove(min_group_sizeHash, \"\");\n  return result;\n}\n\nfunction max_group_sizeCreate (max_group_sizeEntry) {\n  var max_group_sizeHash = commit(\"max_group_size\", max_group_sizeEntry);\n  return max_group_sizeHash;\n}\n\nfunction max_group_sizeRead (max_group_sizeHash) {\n  var max_group_size = get(max_group_sizeHash);\n  return max_group_size;\n}\n\nfunction max_group_sizeUpdate (max_group_sizeHash) {\n  var sampleValue={\"max_group_size\":12,\"extraField\":true};\n  var max_group_sizeOutHash = update(\"max_group_size\", sampleValue, max_group_sizeHash);\n  return max_group_sizeOutHash;\n}\n\nfunction max_group_sizeDelete (max_group_sizeHash) {\n  var result = remove(max_group_sizeHash, \"\");\n  return result;\n}\n\nfunction hosting_meterCreate (hosting_meterEntry) {\n  var hosting_meterHash = commit(\"hosting_meter\", hosting_meterEntry);\n  return hosting_meterHash;\n}\n\nfunction hosting_meterRead (hosting_meterHash) {\n  var hosting_meter = get(hosting_meterHash);\n  return hosting_meter;\n}\n\nfunction hosting_meterUpdate (hosting_meterHash) {\n  var sampleValue={\"hosting_meter\":10,\"extraField\":true};\n  var hosting_meterOutHash = update(\"hosting_meter\", sampleValue, hosting_meterHash);\n  return hosting_meterOutHash;\n}\n\nfunction available_on_dateCreate (available_on_dateEntry) {\n  var available_on_dateHash = commit(\"available_on_date\", available_on_dateEntry);\n  return available_on_dateHash;\n}\n\nfunction available_on_dateRead (available_on_dateHash) {\n  var available_on_date = get(available_on_dateHash);\n  return available_on_date;\n}\n\nfunction available_on_dateUpdate (available_on_dateHash) {\n  var sampleValue={\"available_on_dates\":[\"2019-01-01\"],\"extraField\":true};\n  var available_on_dateOutHash = update(\"available_on_date\", sampleValue, available_on_dateHash);\n  return available_on_dateOutHash;\n}\n\nfunction available_on_dateDelete (available_on_dateHash) {\n  var result = remove(available_on_dateHash, \"\");\n  return result;\n}\n\nfunction set_food_needs (params) {\n  // your custom code here\n  return {};\n}\n\nfunction set_family (params) {\n  // your custom code here\n  return {};\n}\n\nfunction set_accepted_time (params) {\n  // your custom code here\n  return {};\n}\n\nfunction add_recipie (params) {\n  // your custom code here\n  return {};\n}\n\nfunction remove_recipie (params) {\n  // your custom code here\n  return {};\n}\n\nfunction add_dates (params) {\n  // your custom code here\n  return {};\n}\n\nfunction remove_dates (params) {\n  // your custom code here\n  return {};\n}\n\nfunction join_group (params) {\n  // your custom code here\n  return {};\n}\n\nfunction leave_group (params) {\n  // your custom code here\n  return {};\n}\n\nfunction accept_dinner_invite (params) {\n  // your custom code here\n  return {};\n}\n\nfunction decline_dinner_invite (params) {\n  // your custom code here\n  return {};\n}\n\nfunction cancel_dinner (params) {\n  // your custom code here\n  return {};\n}\n\n\n// -----------------------------------------------------------------\n//  The Genesis Function https://developer.holochain.org/genesis\n// -----------------------------------------------------------------\n\n/**\n * Called only when your source chain is generated\n * @return {boolean} success\n */\nfunction genesis () {\n  return true;\n}\n\n// -----------------------------------------------------------------\n//  Validation functions for every change to the local chain or DHT\n// -----------------------------------------------------------------\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateCommit (entryName, entry, header, pkg, sources) {\n  switch (entryName) {\n    case \"food_needs\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"family\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"accepted_dinner_start_time\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_adress\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"min_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"recepies_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_meter\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"in_group_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"available_on_date\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validatePut (entryName, entry, header, pkg, sources) {\n  switch (entryName) {\n    case \"food_needs\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"family\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"accepted_dinner_start_time\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_adress\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"min_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"recepies_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_meter\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"in_group_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"available_on_date\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {string} replaces - the hash for the entry being updated\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateMod (entryName, entry, header, replaces, pkg, sources) {\n  switch (entryName) {\n    case \"food_needs\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"family\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"accepted_dinner_start_time\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_adress\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"min_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"recepies_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_meter\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"in_group_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"available_on_date\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {string} hash - the hash of the entry to remove\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateDel (entryName, hash, pkg, sources) {\n  switch (entryName) {\n    case \"food_needs\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"family\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"accepted_dinner_start_time\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_adress\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"min_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"recepies_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_meter\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"in_group_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"available_on_date\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {string} baseHash - the hash of the base entry being linked\n * @param {?} links - ?\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateLink (entryName, baseHash, links, pkg, sources) {\n  switch (entryName) {\n    case \"food_needs\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"family\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"accepted_dinner_start_time\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_adress\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"min_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_group_size\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"recepies_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"hosting_meter\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"in_group_links\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"available_on_date\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validatePutPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateModPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateDelPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateLinkPkg (entryName) {\n  return null;\n}"
+      },
+      {
+
+        # Zome Name
+        # The name of this code module.
+        "Name": "dinnerGroup",
+
+        # Zome Description
+        # What is the purpose of this module?
+        "Description": "Basic functionality around groups, through which users are matched into dinners",
+
+        # Ribosome Type
+        # What scripting language will you code in?
+        "RibosomeType": "js",
+
+        # Code File
+        # Points to the main script file for this Zome.
+        "CodeFile": "dinnergroup.js",
+
+        # Zome Entries
+        # Data stored and tracked by your Zome.
+        "Entries": [
+          {
+            "Name": "geo_location_center", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"checked\",\n    \"adress\",\n    \"GPS\"\n  ],\n  \"properties\": {\n    \"checked\": {\n      \"$id\": \"#/properties/checked\",\n      \"type\": \"boolean\",\n      \"title\": \"The Checked Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    },\n    \"adress\": {\n      \"$id\": \"#/properties/adress\",\n      \"type\": \"object\",\n      \"title\": \"The Adress Schema\",\n      \"required\": [\n        \"street\",\n        \"zip\",\n        \"City\",\n        \"Country\"\n      ],\n      \"properties\": {\n        \"street\": {\n          \"$id\": \"#/properties/adress/properties/street\",\n          \"type\": \"string\",\n          \"title\": \"The Street Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Backavägen 8\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        },\n        \"zip\": {\n          \"$id\": \"#/properties/adress/properties/zip\",\n          \"type\": \"integer\",\n          \"title\": \"The Zip Schema\",\n          \"default\": 0,\n          \"examples\": [\n            26868\n          ]\n        },\n        \"City\": {\n          \"$id\": \"#/properties/adress/properties/City\",\n          \"type\": \"string\",\n          \"title\": \"The City Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Röstånga\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        },\n        \"Country\": {\n          \"$id\": \"#/properties/adress/properties/Country\",\n          \"type\": \"string\",\n          \"title\": \"The Country Schema\",\n          \"default\": \"\",\n          \"examples\": [\n            \"Sweden\"\n          ],\n          \"pattern\": \"^(.*)$\"\n        }\n      }\n    },\n    \"GPS\": {\n      \"$id\": \"#/properties/GPS\",\n      \"type\": \"object\",\n      \"title\": \"The Gps Schema\",\n      \"required\": [\n        \"lat\",\n        \"long\"\n      ],\n      \"properties\": {\n        \"lat\": {\n          \"$id\": \"#/properties/GPS/properties/lat\",\n          \"type\": \"number\",\n          \"title\": \"The Lat Schema\",\n          \"default\": 0,\n          \"examples\": [\n            55.99958030000001\n          ]\n        },\n        \"long\": {\n          \"$id\": \"#/properties/GPS/properties/long\",\n          \"type\": \"number\",\n          \"title\": \"The Long Schema\",\n          \"default\": 0,\n          \"examples\": [\n            13.28495190000001\n          ]\n        }\n      }\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "max_distance", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"max_distance_in_km\"\n  ],\n  \"properties\": {\n    \"max_distance_in_km\": {\n      \"$id\": \"#/properties/max_distance_in_km\",\n      \"type\": \"integer\",\n      \"title\": \"The Max_distance_in_km Schema\",\n      \"default\": 0,\n      \"examples\": [\n        20\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "invite_only", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"invite_only\"\n  ],\n  \"properties\": {\n    \"invite_only\": {\n      \"$id\": \"#/properties/invite_only\",\n      \"type\": \"boolean\",\n      \"title\": \"The Invite_only Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "conversation_topics", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"topics\"\n  ],\n  \"properties\": {\n    \"topics\": {\n      \"$id\": \"#/properties/topics\",\n      \"type\": \"array\",\n      \"title\": \"The Topics Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/topics/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"politics\",\n          \"gender\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "inexpensive_and_simple_dinners", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"inexpensive\"\n  ],\n  \"properties\": {\n    \"inexpensive\": {\n      \"$id\": \"#/properties/inexpensive\",\n      \"type\": \"boolean\",\n      \"title\": \"The Inexpensive Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "BYOD", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"BYOD\"\n  ],\n  \"properties\": {\n    \"BYOD\": {\n      \"$id\": \"#/properties/BYOD\",\n      \"type\": \"boolean\",\n      \"title\": \"The Byod Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "allow_kids_or_pets", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"allowed_to_bring\"\n  ],\n  \"properties\": {\n    \"allowed_to_bring\": {\n      \"$id\": \"#/properties/allowed_to_bring\",\n      \"type\": \"object\",\n      \"title\": \"The Allowed_to_bring Schema\",\n      \"required\": [\n        \"kids\",\n        \"pets\"\n      ],\n      \"properties\": {\n        \"kids\": {\n          \"$id\": \"#/properties/allowed_to_bring/properties/kids\",\n          \"type\": \"boolean\",\n          \"title\": \"The Kids Schema\",\n          \"default\": false,\n          \"examples\": [\n            true\n          ]\n        },\n        \"pets\": {\n          \"$id\": \"#/properties/allowed_to_bring/properties/pets\",\n          \"type\": \"boolean\",\n          \"title\": \"The Pets Schema\",\n          \"default\": false,\n          \"examples\": [\n            false\n          ]\n        }\n      }\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "pot_luck_dinners", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"potluck\"\n  ],\n  \"properties\": {\n    \"potluck\": {\n      \"$id\": \"#/properties/potluck\",\n      \"type\": \"boolean\",\n      \"title\": \"The Potluck Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          },
+          {
+            "Name": "dinner", # The name of this entry.
+            "Required": true, # Is this entry required?
+            "DataFormat": "json", # What type of data should this entry store?
+            "Sharing": "public", # Should this entry be publicly accessible?
+            "Schema": "{\n  \"definitions\": {},\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$id\": \"http://example.com/root.json\",\n  \"type\": \"object\",\n  \"title\": \"The Root Schema\",\n  \"required\": [\n    \"dinner_datetime\",\n    \"host\",\n    \"guest_list\",\n    \"confirmed_dinner\"\n  ],\n  \"properties\": {\n    \"dinner_datetime\": {\n      \"$id\": \"#/properties/dinner_datetime\",\n      \"type\": \"string\",\n      \"title\": \"The Dinner_datetime Schema\",\n      \"default\": \"\",\n      \"examples\": [\n        \"2019-01-02:19.00\"\n      ],\n      \"pattern\": \"^(.*)$\"\n    },\n    \"host\": {\n      \"$id\": \"#/properties/host\",\n      \"type\": \"string\",\n      \"title\": \"The Host Schema\",\n      \"default\": \"\",\n      \"examples\": [\n        \"host_userhash\"\n      ],\n      \"pattern\": \"^(.*)$\"\n    },\n    \"guest_list\": {\n      \"$id\": \"#/properties/guest_list\",\n      \"type\": \"array\",\n      \"title\": \"The Guest_list Schema\",\n      \"items\": {\n        \"$id\": \"#/properties/guest_list/items\",\n        \"type\": \"string\",\n        \"title\": \"The Items Schema\",\n        \"default\": \"\",\n        \"examples\": [\n          \"userhash1\",\n          \"userhash2\",\n          \"userhash3\"\n        ],\n        \"pattern\": \"^(.*)$\"\n      }\n    },\n    \"confirmed_dinner\": {\n      \"$id\": \"#/properties/confirmed_dinner\",\n      \"type\": \"boolean\",\n      \"title\": \"The Confirmed_dinner Schema\",\n      \"default\": false,\n      \"examples\": [\n        false\n      ]\n    }\n  }\n}",
+            "_": "crud"
+          }
+        ],
+
+        # Zome Functions
+        # Functions which can be called in your Zome's API.
+        "Functions": [
+          {
+            "Name": "geo_location_centerCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:geo_location_center"
+          },
+          {
+            "Name": "geo_location_centerRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:geo_location_center"
+          },
+          {
+            "Name": "geo_location_centerUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:geo_location_center"
+          },
+          {
+            "Name": "geo_location_centerDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:geo_location_center"
+          },
+          {
+            "Name": "max_distanceCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:max_distance"
+          },
+          {
+            "Name": "max_distanceRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:max_distance"
+          },
+          {
+            "Name": "max_distanceUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:max_distance"
+          },
+          {
+            "Name": "max_distanceDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:max_distance"
+          },
+          {
+            "Name": "invite_onlyCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:invite_only"
+          },
+          {
+            "Name": "invite_onlyRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:invite_only"
+          },
+          {
+            "Name": "invite_onlyUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:invite_only"
+          },
+          {
+            "Name": "invite_onlyDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:invite_only"
+          },
+          {
+            "Name": "conversation_topicsCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:conversation_topics"
+          },
+          {
+            "Name": "conversation_topicsRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:conversation_topics"
+          },
+          {
+            "Name": "conversation_topicsUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:conversation_topics"
+          },
+          {
+            "Name": "conversation_topicsDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:conversation_topics"
+          },
+          {
+            "Name": "inexpensive_and_simple_dinnersCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:inexpensive_and_simple_dinners"
+          },
+          {
+            "Name": "inexpensive_and_simple_dinnersRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:inexpensive_and_simple_dinners"
+          },
+          {
+            "Name": "inexpensive_and_simple_dinnersUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:inexpensive_and_simple_dinners"
+          },
+          {
+            "Name": "inexpensive_and_simple_dinnersDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:inexpensive_and_simple_dinners"
+          },
+          {
+            "Name": "BYODCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:BYOD"
+          },
+          {
+            "Name": "BYODRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:BYOD"
+          },
+          {
+            "Name": "BYODUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:BYOD"
+          },
+          {
+            "Name": "BYODDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:BYOD"
+          },
+          {
+            "Name": "allow_kids_or_petsCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:allow_kids_or_pets"
+          },
+          {
+            "Name": "allow_kids_or_petsRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:allow_kids_or_pets"
+          },
+          {
+            "Name": "allow_kids_or_petsUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:allow_kids_or_pets"
+          },
+          {
+            "Name": "allow_kids_or_petsDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:allow_kids_or_pets"
+          },
+          {
+            "Name": "pot_luck_dinnersCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:pot_luck_dinners"
+          },
+          {
+            "Name": "pot_luck_dinnersRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:pot_luck_dinners"
+          },
+          {
+            "Name": "pot_luck_dinnersUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:pot_luck_dinners"
+          },
+          {
+            "Name": "pot_luck_dinnersDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:pot_luck_dinners"
+          },
+          {
+            "Name": "dinnerCreate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "c:dinner"
+          },
+          {
+            "Name": "dinnerRead", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "r:dinner"
+          },
+          {
+            "Name": "dinnerUpdate", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "u:dinner"
+          },
+          {
+            "Name": "dinnerDelete", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "public", # Level to which is this function exposed.
+            "_": "d:dinner"
+          },
+          {
+            "Name": "create_tentative_dinner", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "delete_tentative_dinner", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          },
+          {
+            "Name": "create_accepted_dinner", # The name of this function.
+            "CallingType": "json", # Data format for parameters passed to this function.
+            "Exposure": "", # Level to which is this function exposed.
+          }
+        ],
+
+        # Zome Source Code
+        # The logic that will control Zome behavior
+        "Code": "'use strict';\n\n// -----------------------------------------------------------------\n//  This stub Zome code file was auto-generated by hc-scaffold\n// -----------------------------------------------------------------\n\n// -----------------------------------------------------------------\n//  Exposed functions with custom logic https://developer.holochain.org/API_reference\n// -----------------------------------------------------------------\n\nfunction geo_location_centerCreate (geo_location_centerEntry) {\n  var geo_location_centerHash = commit(\"geo_location_center\", geo_location_centerEntry);\n  return geo_location_centerHash;\n}\n\nfunction geo_location_centerRead (geo_location_centerHash) {\n  var geo_location_center = get(geo_location_centerHash);\n  return geo_location_center;\n}\n\nfunction geo_location_centerUpdate (geo_location_centerHash) {\n  var sampleValue={\"checked\":false,\"adress\":{\"street\":\"Backavägen 8\",\"zip\":26868,\"City\":\"Röstånga\",\"Country\":\"Sweden\"},\"GPS\":{\"lat\":55.99958030000001,\"long\":13.28495190000001},\"extraField\":true};\n  var geo_location_centerOutHash = update(\"geo_location_center\", sampleValue, geo_location_centerHash);\n  return geo_location_centerOutHash;\n}\n\nfunction geo_location_centerDelete (geo_location_centerHash) {\n  var result = remove(geo_location_centerHash, \"\");\n  return result;\n}\n\nfunction max_distanceCreate (max_distanceEntry) {\n  var max_distanceHash = commit(\"max_distance\", max_distanceEntry);\n  return max_distanceHash;\n}\n\nfunction max_distanceRead (max_distanceHash) {\n  var max_distance = get(max_distanceHash);\n  return max_distance;\n}\n\nfunction max_distanceUpdate (max_distanceHash) {\n  var sampleValue={\"max_distance_in_km\":20,\"extraField\":true};\n  var max_distanceOutHash = update(\"max_distance\", sampleValue, max_distanceHash);\n  return max_distanceOutHash;\n}\n\nfunction max_distanceDelete (max_distanceHash) {\n  var result = remove(max_distanceHash, \"\");\n  return result;\n}\n\nfunction invite_onlyCreate (invite_onlyEntry) {\n  var invite_onlyHash = commit(\"invite_only\", invite_onlyEntry);\n  return invite_onlyHash;\n}\n\nfunction invite_onlyRead (invite_onlyHash) {\n  var invite_only = get(invite_onlyHash);\n  return invite_only;\n}\n\nfunction invite_onlyUpdate (invite_onlyHash) {\n  var sampleValue={\"invite_only\":false,\"extraField\":true};\n  var invite_onlyOutHash = update(\"invite_only\", sampleValue, invite_onlyHash);\n  return invite_onlyOutHash;\n}\n\nfunction invite_onlyDelete (invite_onlyHash) {\n  var result = remove(invite_onlyHash, \"\");\n  return result;\n}\n\nfunction conversation_topicsCreate (conversation_topicsEntry) {\n  var conversation_topicsHash = commit(\"conversation_topics\", conversation_topicsEntry);\n  return conversation_topicsHash;\n}\n\nfunction conversation_topicsRead (conversation_topicsHash) {\n  var conversation_topics = get(conversation_topicsHash);\n  return conversation_topics;\n}\n\nfunction conversation_topicsUpdate (conversation_topicsHash) {\n  var sampleValue={\"topics\":[\"politics\"],\"extraField\":true};\n  var conversation_topicsOutHash = update(\"conversation_topics\", sampleValue, conversation_topicsHash);\n  return conversation_topicsOutHash;\n}\n\nfunction conversation_topicsDelete (conversation_topicsHash) {\n  var result = remove(conversation_topicsHash, \"\");\n  return result;\n}\n\nfunction inexpensive_and_simple_dinnersCreate (inexpensive_and_simple_dinnersEntry) {\n  var inexpensive_and_simple_dinnersHash = commit(\"inexpensive_and_simple_dinners\", inexpensive_and_simple_dinnersEntry);\n  return inexpensive_and_simple_dinnersHash;\n}\n\nfunction inexpensive_and_simple_dinnersRead (inexpensive_and_simple_dinnersHash) {\n  var inexpensive_and_simple_dinners = get(inexpensive_and_simple_dinnersHash);\n  return inexpensive_and_simple_dinners;\n}\n\nfunction inexpensive_and_simple_dinnersUpdate (inexpensive_and_simple_dinnersHash) {\n  var sampleValue={\"inexpensive\":false,\"extraField\":true};\n  var inexpensive_and_simple_dinnersOutHash = update(\"inexpensive_and_simple_dinners\", sampleValue, inexpensive_and_simple_dinnersHash);\n  return inexpensive_and_simple_dinnersOutHash;\n}\n\nfunction inexpensive_and_simple_dinnersDelete (inexpensive_and_simple_dinnersHash) {\n  var result = remove(inexpensive_and_simple_dinnersHash, \"\");\n  return result;\n}\n\nfunction BYODCreate (BYODEntry) {\n  var BYODHash = commit(\"BYOD\", BYODEntry);\n  return BYODHash;\n}\n\nfunction BYODRead (BYODHash) {\n  var BYOD = get(BYODHash);\n  return BYOD;\n}\n\nfunction BYODUpdate (BYODHash) {\n  var sampleValue={\"BYOD\":false,\"extraField\":true};\n  var BYODOutHash = update(\"BYOD\", sampleValue, BYODHash);\n  return BYODOutHash;\n}\n\nfunction BYODDelete (BYODHash) {\n  var result = remove(BYODHash, \"\");\n  return result;\n}\n\nfunction allow_kids_or_petsCreate (allow_kids_or_petsEntry) {\n  var allow_kids_or_petsHash = commit(\"allow_kids_or_pets\", allow_kids_or_petsEntry);\n  return allow_kids_or_petsHash;\n}\n\nfunction allow_kids_or_petsRead (allow_kids_or_petsHash) {\n  var allow_kids_or_pets = get(allow_kids_or_petsHash);\n  return allow_kids_or_pets;\n}\n\nfunction allow_kids_or_petsUpdate (allow_kids_or_petsHash) {\n  var sampleValue={\"allowed_to_bring\":{\"kids\":true,\"pets\":false},\"extraField\":true};\n  var allow_kids_or_petsOutHash = update(\"allow_kids_or_pets\", sampleValue, allow_kids_or_petsHash);\n  return allow_kids_or_petsOutHash;\n}\n\nfunction allow_kids_or_petsDelete (allow_kids_or_petsHash) {\n  var result = remove(allow_kids_or_petsHash, \"\");\n  return result;\n}\n\nfunction pot_luck_dinnersCreate (pot_luck_dinnersEntry) {\n  var pot_luck_dinnersHash = commit(\"pot_luck_dinners\", pot_luck_dinnersEntry);\n  return pot_luck_dinnersHash;\n}\n\nfunction pot_luck_dinnersRead (pot_luck_dinnersHash) {\n  var pot_luck_dinners = get(pot_luck_dinnersHash);\n  return pot_luck_dinners;\n}\n\nfunction pot_luck_dinnersUpdate (pot_luck_dinnersHash) {\n  var sampleValue={\"potluck\":false,\"extraField\":true};\n  var pot_luck_dinnersOutHash = update(\"pot_luck_dinners\", sampleValue, pot_luck_dinnersHash);\n  return pot_luck_dinnersOutHash;\n}\n\nfunction pot_luck_dinnersDelete (pot_luck_dinnersHash) {\n  var result = remove(pot_luck_dinnersHash, \"\");\n  return result;\n}\n\nfunction dinnerCreate (dinnerEntry) {\n  var dinnerHash = commit(\"dinner\", dinnerEntry);\n  return dinnerHash;\n}\n\nfunction dinnerRead (dinnerHash) {\n  var dinner = get(dinnerHash);\n  return dinner;\n}\n\nfunction dinnerUpdate (dinnerHash) {\n  var sampleValue={\"dinner_datetime\":\"2019-01-02:19.00\",\"host\":\"host_userhash\",\"guest_list\":[\"userhash1\"],\"confirmed_dinner\":false,\"extraField\":true};\n  var dinnerOutHash = update(\"dinner\", sampleValue, dinnerHash);\n  return dinnerOutHash;\n}\n\nfunction dinnerDelete (dinnerHash) {\n  var result = remove(dinnerHash, \"\");\n  return result;\n}\n\nfunction create_tentative_dinner (params) {\n  // your custom code here\n  return {};\n}\n\nfunction delete_tentative_dinner (params) {\n  // your custom code here\n  return {};\n}\n\nfunction create_accepted_dinner (params) {\n  // your custom code here\n  return {};\n}\n\n\n// -----------------------------------------------------------------\n//  The Genesis Function https://developer.holochain.org/genesis\n// -----------------------------------------------------------------\n\n/**\n * Called only when your source chain is generated\n * @return {boolean} success\n */\nfunction genesis () {\n  return true;\n}\n\n// -----------------------------------------------------------------\n//  Validation functions for every change to the local chain or DHT\n// -----------------------------------------------------------------\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateCommit (entryName, entry, header, pkg, sources) {\n  switch (entryName) {\n    case \"geo_location_center\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_distance\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"invite_only\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"conversation_topics\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"inexpensive_and_simple_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"BYOD\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"allow_kids_or_pets\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"pot_luck_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"dinner\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validatePut (entryName, entry, header, pkg, sources) {\n  switch (entryName) {\n    case \"geo_location_center\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_distance\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"invite_only\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"conversation_topics\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"inexpensive_and_simple_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"BYOD\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"allow_kids_or_pets\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"pot_luck_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"dinner\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {*} entry - the entry data to be set\n * @param {object} header - header for the entry containing properties EntryLink, Time, and Type\n * @param {string} replaces - the hash for the entry being updated\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateMod (entryName, entry, header, replaces, pkg, sources) {\n  switch (entryName) {\n    case \"geo_location_center\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_distance\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"invite_only\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"conversation_topics\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"inexpensive_and_simple_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"BYOD\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"allow_kids_or_pets\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"pot_luck_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"dinner\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {string} hash - the hash of the entry to remove\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateDel (entryName, hash, pkg, sources) {\n  switch (entryName) {\n    case \"geo_location_center\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_distance\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"invite_only\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"conversation_topics\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"inexpensive_and_simple_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"BYOD\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"allow_kids_or_pets\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"pot_luck_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"dinner\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to validate any changes to the local chain or DHT\n * @param {string} entryName - the type of entry\n * @param {string} baseHash - the hash of the base entry being linked\n * @param {?} links - ?\n * @param {*} pkg - the extra data provided by the validate[X]Pkg methods\n * @param {object} sources - an array of strings containing the keys of any authors of this entry\n * @return {boolean} is valid?\n */\nfunction validateLink (entryName, baseHash, links, pkg, sources) {\n  switch (entryName) {\n    case \"geo_location_center\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"max_distance\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"invite_only\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"conversation_topics\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"inexpensive_and_simple_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"BYOD\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"allow_kids_or_pets\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"pot_luck_dinners\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    case \"dinner\":\n      // be sure to consider many edge cases for validating\n      // do not just flip this to true without considering what that means\n      // the action will ONLY be successfull if this returns true, so watch out!\n      return false;\n    default:\n      // invalid entry name\n      return false;\n  }\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validatePutPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateModPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateDelPkg (entryName) {\n  return null;\n}\n\n/**\n * Called to get the data needed to validate\n * @param {string} entryName - the name of entry to validate\n * @return {*} the data required for validation\n */\nfunction validateLinkPkg (entryName) {\n  return null;\n}"
+      }
+    ]
+  },
+
+  # TestSets
+  # Auto-Generated test sets for hcdev package
+  "TestSets": [
+    {
+
+      # Name
+      # Name of the Test Set
+      "Name": "dinnerParticipant",
+      "TestSet": {
+        "Tests": [
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for food_needsCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "food_needsCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "allergies": [
+                "nuts"
+              ],
+              "diet": [
+                "paleo"
+              ],
+              "strong_dislikes": [
+                "milk"
+              ]
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for food_needsRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "food_needsRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "allergies": [
+                "nuts"
+              ],
+              "diet": [
+                "paleo"
+              ],
+              "strong_dislikes": [
+                "milk"
+              ]
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for food_needsUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "food_needsUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for food_needsDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "food_needsDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for familyCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "familyCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "partner": false,
+              "kids": {
+                "age": 5,
+                "will_bring_food_for": true
+              },
+              "link_to_other": "hash of user"
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for familyRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "familyRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "partner": false,
+              "kids": {
+                "age": 5,
+                "will_bring_food_for": true
+              },
+              "link_to_other": "hash of user"
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for familyUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "familyUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for familyDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "familyDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for accepted_dinner_start_timeCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "accepted_dinner_start_timeCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "accepted_dinner_start_time": [
+                17
+              ]
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for accepted_dinner_start_timeRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "accepted_dinner_start_timeRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "accepted_dinner_start_time": [
+                17
+              ]
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for accepted_dinner_start_timeUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "accepted_dinner_start_timeUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for accepted_dinner_start_timeDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "accepted_dinner_start_timeDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_adressCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_adressCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "checked": false,
+              "adress": {
+                "street": "Backavägen 8",
+                "zip": 26868,
+                "City": "Röstånga",
+                "Country": "Sweden"
+              },
+              "GPS": {
+                "lat": 55.99958030000001,
+                "long": 13.28495190000001
+              }
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_adressRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_adressRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "checked": false,
+              "adress": {
+                "street": "Backavägen 8",
+                "zip": 26868,
+                "City": "Röstånga",
+                "Country": "Sweden"
+              },
+              "GPS": {
+                "lat": 55.99958030000001,
+                "long": 13.28495190000001
+              }
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_adressUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_adressUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for min_group_sizeCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "min_group_sizeCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": "test",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for min_group_sizeRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "min_group_sizeRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "test"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for min_group_sizeUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "min_group_sizeUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for min_group_sizeDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "min_group_sizeDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_group_sizeCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_group_sizeCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "max_group_size": 12
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_group_sizeRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_group_sizeRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "max_group_size": 12
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_group_sizeUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_group_sizeUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_group_sizeDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_group_sizeDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_meterCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_meterCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "hosting_meter": 10
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_meterRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_meterRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "hosting_meter": 10
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for hosting_meterUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "hosting_meterUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for available_on_dateCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "available_on_dateCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "available_on_dates": [
+                "2019-01-01"
+              ]
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for available_on_dateRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "available_on_dateRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "available_on_dates": [
+                "2019-01-01"
+              ]
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for available_on_dateUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "available_on_dateUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for available_on_dateDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "available_on_dateDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for set_food_needs",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "set_food_needs",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for set_family",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "set_family",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for set_accepted_time",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "set_accepted_time",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for add_recipie",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "add_recipie",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for remove_recipie",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "remove_recipie",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for add_dates",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "add_dates",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for remove_dates",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "remove_dates",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for join_group",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "join_group",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for leave_group",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "leave_group",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for accept_dinner_invite",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "accept_dinner_invite",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for decline_dinner_invite",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "decline_dinner_invite",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for cancel_dinner",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerParticipant",
+
+            # Function Name
+            # The function to test
+            "FnName": "cancel_dinner",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          }
+        ]
+      }
+    },
+    {
+
+      # Name
+      # Name of the Test Set
+      "Name": "dinnerGroup",
+      "TestSet": {
+        "Tests": [
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for geo_location_centerCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "geo_location_centerCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "checked": false,
+              "adress": {
+                "street": "Backavägen 8",
+                "zip": 26868,
+                "City": "Röstånga",
+                "Country": "Sweden"
+              },
+              "GPS": {
+                "lat": 55.99958030000001,
+                "long": 13.28495190000001
+              }
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for geo_location_centerRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "geo_location_centerRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "checked": false,
+              "adress": {
+                "street": "Backavägen 8",
+                "zip": 26868,
+                "City": "Röstånga",
+                "Country": "Sweden"
+              },
+              "GPS": {
+                "lat": 55.99958030000001,
+                "long": 13.28495190000001
+              }
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for geo_location_centerUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "geo_location_centerUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for geo_location_centerDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "geo_location_centerDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_distanceCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_distanceCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "max_distance_in_km": 20
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_distanceRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_distanceRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "max_distance_in_km": 20
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_distanceUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_distanceUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for max_distanceDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "max_distanceDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for invite_onlyCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "invite_onlyCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "invite_only": false
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for invite_onlyRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "invite_onlyRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "invite_only": false
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for invite_onlyUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "invite_onlyUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for invite_onlyDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "invite_onlyDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for conversation_topicsCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "conversation_topicsCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "topics": [
+                "politics"
+              ]
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for conversation_topicsRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "conversation_topicsRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "topics": [
+                "politics"
+              ]
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for conversation_topicsUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "conversation_topicsUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for conversation_topicsDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "conversation_topicsDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for inexpensive_and_simple_dinnersCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "inexpensive_and_simple_dinnersCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "inexpensive": false
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for inexpensive_and_simple_dinnersRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "inexpensive_and_simple_dinnersRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "inexpensive": false
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for inexpensive_and_simple_dinnersUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "inexpensive_and_simple_dinnersUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for inexpensive_and_simple_dinnersDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "inexpensive_and_simple_dinnersDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for BYODCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "BYODCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "BYOD": false
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for BYODRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "BYODRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "BYOD": false
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for BYODUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "BYODUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for BYODDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "BYODDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for allow_kids_or_petsCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "allow_kids_or_petsCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "allowed_to_bring": {
+                "kids": true,
+                "pets": false
+              }
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for allow_kids_or_petsRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "allow_kids_or_petsRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "allowed_to_bring": {
+                "kids": true,
+                "pets": false
+              }
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for allow_kids_or_petsUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "allow_kids_or_petsUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for allow_kids_or_petsDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "allow_kids_or_petsDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for pot_luck_dinnersCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "pot_luck_dinnersCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "potluck": false
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for pot_luck_dinnersRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "pot_luck_dinnersRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "potluck": false
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for pot_luck_dinnersUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "pot_luck_dinnersUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for pot_luck_dinnersDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "pot_luck_dinnersDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for dinnerCreate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "dinnerCreate",
+
+            # Input
+            # Input sent to the function
+            "Input": {
+              "dinner_datetime": "2019-01-02:19.00",
+              "host": "host_userhash",
+              "guest_list": [
+                "userhash1"
+              ],
+              "confirmed_dinner": false
+            },
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for dinnerRead",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "dinnerRead",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": {
+              "dinner_datetime": "2019-01-02:19.00",
+              "host": "host_userhash",
+              "guest_list": [
+                "userhash1"
+              ],
+              "confirmed_dinner": false
+            }
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for dinnerUpdate",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "dinnerUpdate",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for dinnerDelete",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "dinnerDelete",
+
+            # Input
+            # Input sent to the function
+            "Input": "%h%",
+
+            # Output
+            # Output from the function to validate
+            "Output": "%h%"
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for create_tentative_dinner",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "create_tentative_dinner",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for delete_tentative_dinner",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "delete_tentative_dinner",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          },
+          {
+
+            # Convey
+            # Description of this test
+            "Convey": "auto-generated test for create_accepted_dinner",
+
+            # Zome
+            # The zome this test is related to
+            "Zome": "dinnerGroup",
+
+            # Function Name
+            # The function to test
+            "FnName": "create_accepted_dinner",
+
+            # Input
+            # Input sent to the function
+            "Input": "",
+
+            # Output
+            # Output from the function to validate
+            "Output": {}
+          }
+        ]
+      }
+    }
+  ]
+}

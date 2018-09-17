@@ -1,0 +1,62 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "partner",
+    "kids",
+    "link_to_other"
+  ],
+  "properties": {
+    "partner": {
+      "$id": "#/properties/partner",
+      "type": "boolean",
+      "title": "The Partner Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "kids": {
+      "$id": "#/properties/kids",
+      "type": "object",
+      "title": "The Kids Schema",
+      "required": [
+        "age",
+        "will_bring_food_for"
+      ],
+      "properties": {
+        "age": {
+          "$id": "#/properties/kids/properties/age",
+          "type": "integer",
+          "title": "The Age Schema",
+          "default": 0,
+          "examples": [
+            5
+          ]
+        },
+        "will_bring_food_for": {
+          "$id": "#/properties/kids/properties/will_bring_food_for",
+          "type": "boolean",
+          "title": "The Will_bring_food_for Schema",
+          "default": false,
+          "examples": [
+            true
+          ]
+        }
+      }
+    },
+    "link_to_other": {
+      "$id": "#/properties/link_to_other",
+      "type": "string",
+      "title": "The Link_to_other Schema",
+      "default": "",
+      "examples": [
+        "hash of user"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

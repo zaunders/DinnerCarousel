@@ -172,34 +172,6 @@
       "Output": "%h%"
     },
     {
-      "Convey": "auto-generated test for min_group_sizeCreate",
-      "Zome": "dinnerParticipant",
-      "FnName": "min_group_sizeCreate",
-      "Input": "test",
-      "Output": "%h%"
-    },
-    {
-      "Convey": "auto-generated test for min_group_sizeRead",
-      "Zome": "dinnerParticipant",
-      "FnName": "min_group_sizeRead",
-      "Input": "%h%",
-      "Output": "test"
-    },
-    {
-      "Convey": "auto-generated test for min_group_sizeUpdate",
-      "Zome": "dinnerParticipant",
-      "FnName": "min_group_sizeUpdate",
-      "Input": "%h%",
-      "Output": "%h%"
-    },
-    {
-      "Convey": "auto-generated test for min_group_sizeDelete",
-      "Zome": "dinnerParticipant",
-      "FnName": "min_group_sizeDelete",
-      "Input": "%h%",
-      "Output": "%h%"
-    },
-    {
       "Convey": "auto-generated test for max_group_sizeCreate",
       "Zome": "dinnerParticipant",
       "FnName": "max_group_sizeCreate",

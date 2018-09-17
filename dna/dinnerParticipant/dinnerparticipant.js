@@ -40,7 +40,7 @@ function familyRead (familyHash) {
 }
 
 function familyUpdate (familyHash) {
-  var sampleValue={"partner":false,"kids":{"age":5,"will_bring_food_for":true},"link_to_other":"hash of user","extraField":true};
+  var sampleValue={"partner":true,"kids":{"age":5,"will_bring_food_for":true},"link_to_other":"hash of user","extraField":true};
   var familyOutHash = update("family", sampleValue, familyHash);
   return familyOutHash;
 }
@@ -82,30 +82,9 @@ function hosting_adressRead (hosting_adressHash) {
 }
 
 function hosting_adressUpdate (hosting_adressHash) {
-  var sampleValue={"checked":false,"adress":{"street":"Backavägen 8","zip":26868,"City":"Röstånga","Country":"Sweden"},"GPS":{"lat":55.99958030000001,"long":13.28495190000001},"extraField":true};
+  var sampleValue={"checked":true,"adress":{"street":"Backavägen 8","zip":26868,"City":"Röstånga","Country":"Sweden"},"GPS":{"lat":55.99958030000001,"long":13.28495190000001},"extraField":true};
   var hosting_adressOutHash = update("hosting_adress", sampleValue, hosting_adressHash);
   return hosting_adressOutHash;
-}
-
-function min_group_sizeCreate (min_group_sizeEntry) {
-  var min_group_sizeHash = commit("min_group_size", min_group_sizeEntry);
-  return min_group_sizeHash;
-}
-
-function min_group_sizeRead (min_group_sizeHash) {
-  var min_group_size = get(min_group_sizeHash);
-  return min_group_size;
-}
-
-function min_group_sizeUpdate (min_group_sizeHash) {
-  var sampleValue={"min_group_size":3,"extraField":true};
-  var min_group_sizeOutHash = update("min_group_size", sampleValue, min_group_sizeHash);
-  return min_group_sizeOutHash;
-}
-
-function min_group_sizeDelete (min_group_sizeHash) {
-  var result = remove(min_group_sizeHash, "");
-  return result;
 }
 
 function max_group_sizeCreate (max_group_sizeEntry) {
@@ -258,55 +237,50 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "family":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "accepted_dinner_start_time":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_adress":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
-    case "min_group_size":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "recepies_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_meter":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "in_group_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "available_on_date":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -325,55 +299,50 @@ function validatePut (entryName, entry, header, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "family":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "accepted_dinner_start_time":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_adress":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
-    case "min_group_size":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "recepies_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_meter":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "in_group_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "available_on_date":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -393,55 +362,50 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "family":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "accepted_dinner_start_time":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_adress":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
-    case "min_group_size":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "recepies_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_meter":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "in_group_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "available_on_date":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -459,55 +423,50 @@ function validateDel (entryName, hash, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "family":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "accepted_dinner_start_time":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_adress":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
-    case "min_group_size":
-      // be sure to consider many edge cases for validating
-      // do not just flip this to true without considering what that means
-      // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "recepies_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_meter":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "in_group_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "available_on_date":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -526,55 +485,55 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "family":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "accepted_dinner_start_time":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_adress":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "min_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_group_size":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "recepies_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "hosting_meter":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "in_group_links":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "available_on_date":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 

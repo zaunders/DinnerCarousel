@@ -19,7 +19,7 @@ function geo_location_centerRead (geo_location_centerHash) {
 }
 
 function geo_location_centerUpdate (geo_location_centerHash) {
-  var sampleValue={"checked":false,"adress":{"street":"Backavägen 8","zip":26868,"City":"Röstånga","Country":"Sweden"},"GPS":{"lat":55.99958030000001,"long":13.28495190000001},"extraField":true};
+  var sampleValue={"checked":true,"adress":{"street":"Backavägen 8","zip":26868,"City":"Röstånga","Country":"Sweden"},"GPS":{"lat":55.99958030000001,"long":13.28495190000001},"extraField":true};
   var geo_location_centerOutHash = update("geo_location_center", sampleValue, geo_location_centerHash);
   return geo_location_centerOutHash;
 }
@@ -61,7 +61,7 @@ function invite_onlyRead (invite_onlyHash) {
 }
 
 function invite_onlyUpdate (invite_onlyHash) {
-  var sampleValue={"invite_only":false,"extraField":true};
+  var sampleValue={"invite_only":true,"extraField":true};
   var invite_onlyOutHash = update("invite_only", sampleValue, invite_onlyHash);
   return invite_onlyOutHash;
 }
@@ -103,7 +103,7 @@ function inexpensive_and_simple_dinnersRead (inexpensive_and_simple_dinnersHash)
 }
 
 function inexpensive_and_simple_dinnersUpdate (inexpensive_and_simple_dinnersHash) {
-  var sampleValue={"inexpensive":false,"extraField":true};
+  var sampleValue={"inexpensive":true,"extraField":true};
   var inexpensive_and_simple_dinnersOutHash = update("inexpensive_and_simple_dinners", sampleValue, inexpensive_and_simple_dinnersHash);
   return inexpensive_and_simple_dinnersOutHash;
 }
@@ -124,7 +124,7 @@ function BYODRead (BYODHash) {
 }
 
 function BYODUpdate (BYODHash) {
-  var sampleValue={"BYOD":false,"extraField":true};
+  var sampleValue={"BYOD":true,"extraField":true};
   var BYODOutHash = update("BYOD", sampleValue, BYODHash);
   return BYODOutHash;
 }
@@ -145,7 +145,7 @@ function allow_kids_or_petsRead (allow_kids_or_petsHash) {
 }
 
 function allow_kids_or_petsUpdate (allow_kids_or_petsHash) {
-  var sampleValue={"allowed_to_bring":{"kids":true,"pets":false},"extraField":true};
+  var sampleValue={"allowed_to_bring":{"kids":true,"pets":true},"extraField":true};
   var allow_kids_or_petsOutHash = update("allow_kids_or_pets", sampleValue, allow_kids_or_petsHash);
   return allow_kids_or_petsOutHash;
 }
@@ -166,7 +166,7 @@ function pot_luck_dinnersRead (pot_luck_dinnersHash) {
 }
 
 function pot_luck_dinnersUpdate (pot_luck_dinnersHash) {
-  var sampleValue={"potluck":false,"extraField":true};
+  var sampleValue={"potluck":true,"extraField":true};
   var pot_luck_dinnersOutHash = update("pot_luck_dinners", sampleValue, pot_luck_dinnersHash);
   return pot_luck_dinnersOutHash;
 }
@@ -187,7 +187,7 @@ function dinnerRead (dinnerHash) {
 }
 
 function dinnerUpdate (dinnerHash) {
-  var sampleValue={"dinner_datetime":"2019-01-02:19.00","host":"host_userhash","guest_list":["userhash1"],"confirmed_dinner":false,"extraField":true};
+  var sampleValue={"dinner_datetime":"2019-01-02:19.00","host":"host_userhash","guest_list":["userhash1"],"confirmed_dinner":true,"extraField":true};
   var dinnerOutHash = update("dinner", sampleValue, dinnerHash);
   return dinnerOutHash;
 }
@@ -244,50 +244,50 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_distance":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "invite_only":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "conversation_topics":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "inexpensive_and_simple_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "BYOD":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "allow_kids_or_pets":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "pot_luck_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "dinner":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -306,50 +306,50 @@ function validatePut (entryName, entry, header, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_distance":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "invite_only":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "conversation_topics":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "inexpensive_and_simple_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "BYOD":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "allow_kids_or_pets":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "pot_luck_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "dinner":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -369,50 +369,50 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_distance":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "invite_only":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "conversation_topics":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "inexpensive_and_simple_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "BYOD":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "allow_kids_or_pets":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "pot_luck_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "dinner":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -430,50 +430,50 @@ function validateDel (entryName, hash, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_distance":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "invite_only":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "conversation_topics":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "inexpensive_and_simple_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "BYOD":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "allow_kids_or_pets":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "pot_luck_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "dinner":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 
@@ -492,50 +492,50 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "max_distance":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "invite_only":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "conversation_topics":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "inexpensive_and_simple_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "BYOD":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "allow_kids_or_pets":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "pot_luck_dinners":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     case "dinner":
       // be sure to consider many edge cases for validating
       // do not just flip this to true without considering what that means
       // the action will ONLY be successfull if this returns true, so watch out!
-      return false;
+      return true;
     default:
       // invalid entry name
-      return false;
+      return true;
   }
 }
 

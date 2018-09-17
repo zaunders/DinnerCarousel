@@ -46,12 +46,6 @@
           "SchemaFile": "hosting_adress.json"
         },
         {
-          "Name": "min_group_size",
-          "Required": true,
-          "DataFormat": "string",
-          "Sharing": "public"
-        },
-        {
           "Name": "max_group_size",
           "Required": true,
           "DataFormat": "json",
@@ -159,26 +153,6 @@
         {
           "Name": "hosting_adressUpdate",
           "CallingType": "json",
-          "Exposure": "public"
-        },
-        {
-          "Name": "min_group_sizeCreate",
-          "CallingType": "string",
-          "Exposure": "public"
-        },
-        {
-          "Name": "min_group_sizeRead",
-          "CallingType": "string",
-          "Exposure": "public"
-        },
-        {
-          "Name": "min_group_sizeUpdate",
-          "CallingType": "string",
-          "Exposure": "public"
-        },
-        {
-          "Name": "min_group_sizeDelete",
-          "CallingType": "string",
           "Exposure": "public"
         },
         {
